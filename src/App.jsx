@@ -12,7 +12,7 @@ import {
 
 import { SpeechProvider, useSpeechSynthesis } from 'react-speech-kit';
 
-const API_KEY = "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";
+const API_KEY = "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";
 // "Explain things like you would to a 10 year old learning how to code."
 const systemMessage = {
   //  Explain things like you're talking to a software professional with 5 years of experience.
@@ -70,7 +70,7 @@ function App() {
     // and the messages which we formatted above. We add a system message in the front to'
     // determine how we want chatGPT to act.
     const apiRequestBody = {
-      model: "gpt-3.5-turbo",
+      model: "text-davinci-003",
       messages: [
         systemMessage, // The system message DEFINES the logic of our chatGPT
         lastElementMsg, // The messages from our chat with ChatGPT

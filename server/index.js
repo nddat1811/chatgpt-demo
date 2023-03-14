@@ -7,8 +7,8 @@ const app = express();
 const port = 3001;
 
 const configuration = new Configuration({
-    organization: "org-ivTLP22uf4IiFQ8zU0Y5HP7T",
-    apiKey: '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',
+    organization: "org-3D6xBSd1Yaz0ErFb6Ssj650A",
+    apiKey: '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',
 });
 const token = new OpenAIApi(configuration);
 
@@ -16,7 +16,6 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.post('/', async (req, res)=>{
-    const model = req.body.model;
     const userMessage = req.body.messages.find(msg => msg.role === 'user').content;
 
     const response = await token.createCompletion({
