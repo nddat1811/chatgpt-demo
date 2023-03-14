@@ -10,9 +10,9 @@ import {
   TypingIndicator,
 } from "@chatscope/chat-ui-kit-react";
 
-import { useSpeechSynthesis } from 'react-speech-kit'
+import { SpeechProvider, useSpeechSynthesis } from 'react-speech-kit';
 
-const API_KEY = "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";
+const API_KEY = "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";
 // "Explain things like you would to a 10 year old learning how to code."
 const systemMessage = {
   //  Explain things like you're talking to a software professional with 5 years of experience.
@@ -30,7 +30,6 @@ function App() {
     },
   ]);
 
-  const {speak} = useSpeechSynthesis
   const [isTyping, setIsTyping] = useState(false);
 
   const handleSend = async (message) => {
@@ -100,6 +99,10 @@ function App() {
         setIsTyping(false);
       });
   }
+  const {speak} = useSpeechSynthesis()
+  const handleSpeak = (message) =>{
+    speak({text:message})
+  }
 
   return (
     <div className="App">
@@ -116,7 +119,7 @@ function App() {
             >
               {messages.map((message, i) => {
                 //console.log(message)
-                return <Message key={i} model={message} />;
+                return <Message key={i} model={message} onClick={() => handleSpeak(message.message)}/>;
               })}
             </MessageList>
             <MessageInput placeholder="Type message here" onSend={handleSend} />
