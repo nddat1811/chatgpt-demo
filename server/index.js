@@ -25,10 +25,11 @@ app.post('/', async (req, res)=>{
         max_tokens: 400,
         temperature: 0,
     });
-    console.log(response)
-    if(response.data.choices[0].text){
+    const respone = response.data.choices[0].text; //clear \n\n
+    const result = respone.replace(/\n/g, '');
+    if(result){
         res.json({
-            message: response.data.choices[0].text
+            message: result
         });
     }
     
